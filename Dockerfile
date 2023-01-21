@@ -3,11 +3,9 @@ FROM node:10-alpine
 
 WORKDIR /home/node/app
 
-COPY package*.json ./
+COPY . /home/node/app 
 
 RUN npm i
-
-COPY . ./
 
 EXPOSE 8000
 

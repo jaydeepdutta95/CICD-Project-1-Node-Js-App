@@ -1,0 +1,16 @@
+{
+    "name": "jay-nodejs-app",
+    "version": "1.0.0",
+    "description": "nodejs image demo",
+    "author": "Jay <jaydeep.dutta@yz.com>",
+    "license": "MIT",
+    "main": "app.js",
+    "keywords": [
+      "nodejs",
+      "bootstrap",
+      "express"
+    ],
+    "dependencies": {
+      "express": "^4.16.4"
+    }
+  }

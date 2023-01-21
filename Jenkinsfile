@@ -2,9 +2,9 @@ pipeline{
     agent any
     
     environment{
-        registry = "jaydeep007docker/demo-apps"
+        registry = "jaydeep007docker"
         registryCredential = 'c468ea58-6880-4e27-8190-5efb7f1dd07f'        
-    }
+               }
     
     stages{
        stage('Building image') {
@@ -17,7 +17,7 @@ pipeline{
        stage('Deploy Image') {
       steps{
          script {
-            docker.withRegistry( '', registryCredential ) {
+            docker.withRegistry( 'jaydeep007docker', registryCredential ) {
             dockerImage.push()
           }
         }

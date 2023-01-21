@@ -1,13 +1,24 @@
 #!groovy
 
-pipeline {
-	agent none
-  stages {
-    stage('Docker Build') {
-    	agent any
-      steps {
-      	sh 'docker build -t nodeimage:latest .'
+        registry = "jaydeep007docker/demo-apps"
+        registryCredential = '<dockerhub-credential-name>'        
+    }
+    
+    stages{
+       stage('Building image') {
+      steps{
+        script {
+          dockerImage = docker.build registry + ":$BUILD_NUMBER"
+        }
       }
     }
-  }
-}
+       stage('Deploy Image') {
+      steps{
+         script {
+            docker.withRegistry( '', registryCredential ) {
+            dockerImage.push()
+          }
+        }
+      }
+    }
+}}

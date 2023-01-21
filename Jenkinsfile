@@ -1,7 +1,9 @@
-#!groovy
-
+pipeline{
+    agent any
+    
+    environment{
         registry = "jaydeep007docker/demo-apps"
-        registryCredential = '<dockerhub-credential-name>'        
+        registryCredential = 'c468ea58-6880-4e27-8190-5efb7f1dd07f'        
     }
     
     stages{
@@ -21,4 +23,5 @@
         }
       }
     }
-}}
+  }
+}

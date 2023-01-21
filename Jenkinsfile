@@ -16,10 +16,11 @@ pipeline{
     }
        stage('Deploy Image') {
       steps{
-         script {
-            docker.withRegistry( 'jaydeep007docker', 'Sonai@1387' ) {
-            dockerImage.push()
-          }
+         steps {
+                withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'DOCKER_PASSWORD', usernameVariable: 'DOCKER_USERNAME')]) {
+                    sh "docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD"
+                    sh 'docker push myimage:latest'
+                }
         }
       }
     }

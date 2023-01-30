@@ -23,6 +23,7 @@ pipeline {
                 }
             }
         }
+        stages ('Deployment') {
         parallel  {stage('Deploy in agent1') { 
             agent { label 'agent1' 
             }
@@ -38,5 +39,6 @@ pipeline {
             }
         }
        }
+      }
     }
 }

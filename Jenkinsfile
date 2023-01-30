@@ -23,7 +23,7 @@ pipeline {
                 }
             }
         }
-        stages ('Deployment') {
+        stage ('Deployment') {
         parallel  {stage('Deploy in agent1') { 
             agent { label 'agent1' 
             }

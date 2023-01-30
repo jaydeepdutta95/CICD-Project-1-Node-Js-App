@@ -23,12 +23,20 @@ pipeline {
                 }
             }
         }
-        stage('Deploy') { 
+        parallel  {stage('Deploy in agent1') { 
             agent { label 'agent1' 
             }
             steps{
                 sh "docker-compose down && docker-compose up -d"
             }
         }
+                  stage('Deploy in agent2'){ 
+            agent { label 'agent2' 
+            }
+            steps{
+                sh "docker-compose down && docker-compose up -d"
+            }
+        }
+       }
     }
 }
